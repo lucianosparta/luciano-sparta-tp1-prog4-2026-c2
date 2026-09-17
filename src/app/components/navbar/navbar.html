@@ -1,0 +1,44 @@
+<header class="navbar-header">
+  <div class="navbar-contenedor">
+    <a routerLink="/bienvenida" class="logo-area">
+
+      <!-- ICONO LOGO -->
+      <div class="logo-icono">
+        <img ngSrc="logo.png" alt="Turbo Cine" width="46" height="46" priority />
+      </div>
+
+      <!-- TEXTO LOGO-->
+      <div class="logo-texto">
+        <span>Turbo<span class="logo-resaltado">Cine</span></span>
+      </div>
+    </a>
+
+    <!-- BUSCADOR -->
+    <form class="buscador-form">
+      <input type="text" placeholder="Buscador" class="buscador-input" />
+      <button type="submit" class="btn-buscar">Buscar</button>
+    </form>
+
+    <!-- SUBMENÚ -->
+    <nav class="sub-nav">
+      <a routerLink="/bienvenida" class="sub-link">Inicio</a>
+      <span class="separador">|</span>
+      <a routerLink="/bienvenida" class="sub-link">Cartelera</a>
+      <span class="separador">|</span>
+      <a routerLink="/bienvenida" class="sub-link">Candy Bar</a>
+      <span class="separador">|</span>
+
+      @if (authS.usuarioActual()) {
+        <span class="usuario">
+          Hola, {{ authS.usuarioActual()?.user_metadata?.['nombre'] || 'Usuario' }}
+        </span>
+        <span class="separador">|</span>
+        <button type="button" class="sub-link-btn" (click)="cerrarSesion()">Salir</button>
+      } @else {
+        <a routerLink="/auth/login" class="sub-link">Iniciar Sesión</a>
+        <span class="separador">|</span>
+        <a routerLink="/auth/register" class="sub-link">Registro</a>
+      }
+    </nav>
+  </div>
+</header>

@@ -1,0 +1,27 @@
+<section class="carrusel-section">
+  <!-- TÍTULO -->
+  <div class="carrusel-header">
+    <span class="carrusel-titulo">TurboCine, Las películas más vendidas</span>
+  </div>
+
+  <!-- CARRUSEL TOP-PELIS -->
+  <div class="carrusel-top">
+    @for (peli of peliculas(); track peli.id) {
+      <a [routerLink]="['/pelicula', peli.id]" class="peli-card">
+        
+        <div class="cinta-top">
+          <span>TOP {{ peli.puesto }}</span>
+        </div>
+
+        <img
+          [ngSrc]="peli.posterUrl"
+          [alt]="peli.titulo"
+          width="135"
+          height="200"
+          priority
+          class="peli-img"
+        />
+      </a>
+    }
+  </div>
+</section>

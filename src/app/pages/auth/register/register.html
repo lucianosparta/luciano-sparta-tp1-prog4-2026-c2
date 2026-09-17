@@ -1,0 +1,16 @@
+<h1>Registrarse</h1>
+<form [formGroup]="formulario" (ngSubmit)="accion()">
+  <div>
+    <input type="text" name="nombre" formControlName="nombre" placeholder="nombre" />
+  </div>
+  <div>
+    <input type="text" name="apellido" formControlName="apellido" placeholder="apellido" />
+  </div>
+  <div>
+    <input type="email" name="email" formControlName="email" placeholder="email" />
+  </div>
+  <div>
+    <input type="password" name="password" formControlName="password" placeholder="password" />
+  </div>
+  <button [disabled]="!formulario.valid">Registrarse</button>
+</form>

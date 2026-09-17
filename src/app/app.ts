@@ -1,12 +1,18 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { Auth } from './services/auth';
+import { Navbar } from './components/navbar/navbar';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, Navbar],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('luciano-sparta-tp1-prog4-2026-c2');
+  public authS = inject(Auth)
+
+  cerrar() {
+    this.authS.cerrarSesion();
+  }
 }
